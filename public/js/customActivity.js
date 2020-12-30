@@ -109,7 +109,10 @@ define([
 
          switch(currentStep.key) {
             case 'step1':
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
+                $(function() {
+			setTimeout(function() {
+			ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
+		}, 0);
                 connection.trigger('updateButton', {
                     button: 'next',
                     visible: true
