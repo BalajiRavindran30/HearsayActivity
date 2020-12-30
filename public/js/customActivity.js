@@ -109,10 +109,10 @@ define([
 
          switch(currentStep.key) {
             case 'step1':
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 1}), document.getElementById('mydiv'));
+                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getMessage())
+                    visible: true
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
