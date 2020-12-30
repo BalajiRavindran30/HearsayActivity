@@ -1,8 +1,8 @@
 {
     "workflowApiVersion": "1.1",
     "metaData": {
-        "icon": "images/icn.png",
-        "iconSmall": "images/icnSmall.png"       
+        "icon": "images/dol.png",
+        "iconSmall": "images/dolSmall.png"       
     },
     "type": "REST",
     "lang": {
@@ -29,7 +29,7 @@
                 }
 	   ],
           "outArguments": [],
-          "url": "https://custom-activity-new-clone.herokuapp.com/journeybuilder/execute",
+          "url": "https://hearsay-activity-0932.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -42,24 +42,24 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "c0449c70-71b1-4fc1-8113-01322bd99c81",
+      "applicationExtensionKey": "f291a41d-70cc-474d-a235-dc8e5173fdf2",
       "save": {
-        "url": "https://custom-activity-new-clone.herokuapp.com/journeybuilder/save",
+        "url": "https://hearsay-activity-0932.herokuapp.com/journeybuilder/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://custom-activity-new-clone.herokuapp.com/journeybuilder/publish",
+        "url": "https://hearsay-activity-0932.herokuapp.com/journeybuilder/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://custom-activity-new-clone.herokuapp.com/journeybuilder/stop",
+        "url": "https://hearsay-activity-0932.herokuapp.com/journeybuilder/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://custom-activity-new-clone.herokuapp.com/journeybuilder/validate",
+        "url": "https://hearsay-activity-0932.herokuapp.com/journeybuilder/validate",
         "verb": "POST",
         "useJwt": true
       }
