@@ -110,9 +110,10 @@ define([
          switch(currentStep.key) {
             case 'step1':
                 $(function() {
-			setTimeout(function() {
+		setTimeout(function() {
 			ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
 		}, 0);
+		});
                 connection.trigger('updateButton', {
                     button: 'next',
                     visible: true
@@ -123,7 +124,11 @@ define([
                 });
                 break;
             case 'step2':
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
+                $(function() {
+		setTimeout(function() {
+			ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
+		}, 0);
+		});
                 connection.trigger('updateButton', {
                     button: 'back',
                     visible: true
@@ -135,7 +140,11 @@ define([
                 });
                 break;
             case 'step3':
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 3}), document.getElementById('mydiv'));
+                $(function() {
+		setTimeout(function() {
+			ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
+		}, 0);
+		});
                 connection.trigger('updateButton', {
                      button: 'back',
                      visible: true
