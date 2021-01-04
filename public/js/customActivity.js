@@ -99,7 +99,7 @@ define([
     }
 
     function onClickedNext () {
-	var selectOption = getIntegrationType();
+	var selectOption = getIntegrationValue();
         if (currentStep.key === 'step3' || currentStep.key === 'step2') {
             save();
         } else if(selectOption == 'currentJourney'){
@@ -143,7 +143,7 @@ define([
                 ReactDOM.render(React.createElement(HearsayPage1, {pageno: 1}), document.getElementById('mydiv'));
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getMessage())
+                    enabled: Boolean(getIntegrationValue())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -199,6 +199,11 @@ define([
     function getIntegrationType() {
 	console.log('IntegrationType '+$('select[name="integrationType"]').find('option:selected').html());
         return $('select[name="integrationType"]').find('option:selected').html();
+    }
+	
+    function getIntegrationValue() {
+	console.log('value '+$('select[name="integrationType"]').find('option:selected').attr('value').trim();
+        return $('select[name="integrationType"]').find('option:selected').attr('value').trim();
     }
 
 });
