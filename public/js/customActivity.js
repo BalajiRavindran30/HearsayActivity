@@ -36,7 +36,7 @@ define([
         // Disable the next button if a value isn't selected
         $('select[name="integrationType"]').change(function() {
             var message = getIntegrationType();
-            console.log('m$('select[name="integrationType"]')essage value '+message);
+            console.log('Integration Type '+$('select[name="integrationType"]'));
             if(message != 'CurrentJourney'){
                 //reviewPageEnabled = !reviewPageEnabled; // toggle status
                 steps[1].active = false;
