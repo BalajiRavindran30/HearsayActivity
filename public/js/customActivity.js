@@ -26,7 +26,6 @@ define([
     connection.on('gotoStep', onGotoStep);
 
     function onRender() {
-        //$('#inputField-01').hide();
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
 
@@ -37,15 +36,15 @@ define([
         $(document).on('change','select[name="integrationType"]',function(){
             var selectedValue = getIntegrationValue();
             console.log('Integration Type '+$('select[name="integrationType"]'));
-            if(selectedValue != 'currentJourney'){
+            if(selectedValue == 'currentJourney'){
                 //reviewPageEnabled = !reviewPageEnabled; // toggle status
-                steps[1].active = false;
+                steps[1].active = true;
                 steps[2].active = true; // toggle active
                 connection.trigger('updateSteps', steps);
             } else {
                 //reviewPageEnabled = false; // toggle status
-                steps[2].active = false;
-                steps[1].active = true; // toggle active
+                steps[2].active = true;
+                steps[1].active = false; // toggle active
                 connection.trigger('updateSteps', steps);
             }
             //$('').html(message);
