@@ -7,7 +7,7 @@ define([
 
     var connection = new Postmonger.Session();
     var payload = {};
-    var reviewPageEnabled = false;
+    var lastStepEnabled = false;
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Template Selection", "key": "step1" },
         { "label": "Map the Template Field", "key": "step2", "active": false},
@@ -37,12 +37,11 @@ define([
             var selectedValue = getIntegrationValue();
             console.log('Integration Type '+$('select[name="integrationType"]'));
             if(selectedValue == 'currentJourney'){
-                //reviewPageEnabled = !reviewPageEnabled; // toggle status
+                lastStepEnabled = !lastStepEnabled; // toggle status
                 steps[1].active = true;
                 steps[2].active = true; // toggle active
                 connection.trigger('updateSteps', steps);
             } else {
-                //reviewPageEnabled = false; // toggle status
                 steps[2].active = true;
                 steps[1].active = false; // toggle active
                 connection.trigger('updateSteps', steps);
@@ -157,11 +156,19 @@ define([
                     button: 'back',
                     visible: true
                 });
-                connection.trigger('updateButton', {
-                    button: 'next',
-                    text: 'done',
-                    visible: true
-                });
+                if (lastStepEnabled) {
+                    connection.trigger('updateButton', {
+                        button: 'next',
+                        text: 'next',
+                        visible: true
+                    });
+                } else {
+                    connection.trigger('updateButton', {
+                        button: 'next',
+                        text: 'done',
+                        visible: true
+                    });
+                }
                 break;
             case 'step3':
 		$(function() {
