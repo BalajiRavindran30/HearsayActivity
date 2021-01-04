@@ -34,13 +34,10 @@ define([
         connection.trigger('requestEndpoints');
         
         // Disable the next button if a value isn't selected
-	connection.trigger('updateSteps', steps);
-	var message = getIntegrationType();
-	console.log('Value is '+message);
-       /*$('select').on('change', function() {
-            var message = getIntegrationType();
+        $(document).on('change','select[name="integrationType"]',function(){
+            var selectedValue = getIntegrationValue();
             console.log('Integration Type '+$('select[name="integrationType"]'));
-            if(message != 'CurrentJourney'){
+            if(selectedValue != 'CurrentJourney'){
                 //reviewPageEnabled = !reviewPageEnabled; // toggle status
                 steps[1].active = false;
                 steps[2].active = true; // toggle active
@@ -49,11 +46,10 @@ define([
                 //reviewPageEnabled = false; // toggle status
                 steps[2].active = false;
                 steps[1].active = true; // toggle active
-                $('#inputField-01').show();
                 connection.trigger('updateSteps', steps);
             }
             //$('').html(message);
-        });*/
+        });
     }
 
     function initialize (data) {
