@@ -139,7 +139,7 @@ define([
          switch(currentStep.key) {
             case 'step1':
 		$(document).ready(function() {
-			CallReactPage("1")
+			$.CallReactPage("1");
 		});
                 connection.trigger('updateButton', {
                     button: 'next',
@@ -152,7 +152,7 @@ define([
                 break;
             case 'step2':
 		$(document).ready(function() {
-			CallReactPage("2")
+			$.CallReactPage("2");
 		});
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -166,7 +166,7 @@ define([
                 break;
             case 'step3':
 		$(document).ready(function() {
-			CallReactPage("3")
+			$.CallReactPage("3");
 		});
                 connection.trigger('updateButton', {
                      button: 'back',
