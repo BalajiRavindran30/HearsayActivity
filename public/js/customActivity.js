@@ -7,6 +7,7 @@ define([
 
     var connection = new Postmonger.Session();
     var payload = {};
+    var hearsayfields = {};
     var lastStepEnabled = false;
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Template Selection", "key": "step1" },
@@ -111,7 +112,16 @@ define([
 		} else {
 	    		connection.trigger('nextStep');
 		}
-        } else {
+        } else if(currentStep.key === 'step2'){
+		hearsayfields [$('select[name="control1"]').find('option:selected').attr('value').trim()] = $('select[name="control5"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control2"]').find('option:selected').attr('value').trim()] = $('select[name="control6"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control3"]').find('option:selected').attr('value').trim()] = $('select[name="control7"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control4"]').find('option:selected').attr('value').trim()] = $('select[name="control8"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control9"]').find('option:selected').attr('value').trim()] = $('select[name="control13"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control10"]').find('option:selected').attr('value').trim()] = $('select[name="control14"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control11"]').find('option:selected').attr('value').trim()] = $('select[name="control15"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control12"]').find('option:selected').attr('value').trim()] = $('select[name="control16"]').find('option:selected').attr('value').trim();
+		console.log('hearsayfields '+hearsayfields);
 		connection.trigger('nextStep');
 	}
     }
@@ -191,15 +201,16 @@ define([
         var name = $('select[name="integrationType"]').find('option:selected').html();
 	console.log('name '+name);
         //var value = getMessage();
-	var value;
+	//var value = hearsayfields;
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
+	console.log('hearsayfields '+hearsayfields);
         payload.name = name;
 
-        payload['arguments'].execute.inArguments = [{ "mappedfields": value }];
+        payload['arguments'].execute.inArguments = [{ "hearsayfields": hearsayfields }];
 
         payload['metaData'].isConfigured = true;
 
