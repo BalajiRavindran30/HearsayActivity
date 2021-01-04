@@ -97,7 +97,7 @@ define([
 
     function onClickedNext () {
 	var selectOption = getIntegrationValue();
-        if (currentStep.key === 'step3' || currentStep.key === 'step2') {
+        if (currentStep.key === 'step3') {
             save();
         } else if(selectOption == 'currentJourney'){
 		console.log('input data '+$('input[name="leadsActivity"]')[0]);
