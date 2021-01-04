@@ -100,7 +100,7 @@ define([
 	var selectOption = getIntegrationValue();
         if (currentStep.key === 'step3') {
             save();
-        } else if(selectOption == 'currentJourney'){
+        } else if(currentStep.key === 'step1' && selectOption == 'currentJourney'){
 		console.log('input data '+$('input[name="leadsActivity"]')[0]);
 		var input = $('input[name="leadsActivity"]')[0];
 		//var validityState_object = input.validity;
