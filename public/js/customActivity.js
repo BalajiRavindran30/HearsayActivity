@@ -68,7 +68,7 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                if (key === 'mappedfields') {
+                if (key === 'hearsayfields') {
                     mapfields = val;
                 }
             });
@@ -80,8 +80,16 @@ define([
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
         } else {
-            //$('#select-01').find('option[value='+ mapfields +']').attr('selected', 'selected');
-            //$('#message').html(message);
+            var div_data = '';
+	    for (var key in mapfields) {
+		if (mapfields.hasOwnProperty(key)) {
+		var val = mapfields[key];
+		console.log('key '+key);
+		console.log('value '+val);
+		div_data += "<li>"+key+' : '+val+"</li>";
+		}
+	    }
+	    $("ul").html(div_data);
             showStep(null, 3);
         }
     }
