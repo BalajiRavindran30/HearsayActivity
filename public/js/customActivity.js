@@ -138,8 +138,7 @@ define([
 
          switch(currentStep.key) {
             case 'step1':
-			 alert('step 1');
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 1}), document.getElementById('mydiv'));
+		$(document).ready(CallReactPage(1));
                 connection.trigger('updateButton', {
                     button: 'next',
                     enabled: Boolean(getIntegrationValue())
@@ -150,8 +149,7 @@ define([
                 });
                 break;
             case 'step2':
-			 alert('step 2');
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv2'));
+		$(document).ready(CallReactPage(2));
                 connection.trigger('updateButton', {
                     button: 'back',
                     visible: true
@@ -163,8 +161,7 @@ define([
                 });
                 break;
             case 'step3':
-			 alert('step 3');
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 3}), document.getElementById('mydiv3'));
+		$(document).ready(CallReactPage(3));
                 connection.trigger('updateButton', {
                      button: 'back',
                      visible: true
