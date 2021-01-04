@@ -14,7 +14,7 @@ define([
         { "label": "Review Template Field", "key": "step3", "active": false}
     ];
     var currentStep = steps[0].key;
-
+    var pageno=1;
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -138,9 +138,9 @@ define([
 
          switch(currentStep.key) {
             case 'step1':
-		$(document).ready(function() {
-			$.CallReactPage("1");
-		});
+		$(function() {
+			CallReactPage(pageno);
+		});													
                 connection.trigger('updateButton', {
                     button: 'next',
                     enabled: Boolean(getIntegrationValue())
@@ -151,8 +151,8 @@ define([
                 });
                 break;
             case 'step2':
-		$(document).ready(function() {
-			$.CallReactPage("2");
+		$(function() {
+			CallReactPage(2);
 		});
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -165,8 +165,8 @@ define([
                 });
                 break;
             case 'step3':
-		$(document).ready(function() {
-			$.CallReactPage("3");
+		$(function() {
+			CallReactPage(3);
 		});
                 connection.trigger('updateButton', {
                      button: 'back',
@@ -198,6 +198,31 @@ define([
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
+    }
+
+    function CallReactPage(pgno){
+	var sdivname='mydiv';
+	if(pgno==1 || pgno>3 ){
+	pgno=1;
+	pageno=1;
+	$('#row1').show();
+	$('#row2').hide();
+	$('#row3').hide();
+	}
+	else if(pgno==2){
+	sdivname="mydiv2";
+	$('#row2').show();
+	$('#row1').hide();
+	$('#row3').hide();
+	}
+	else if(pgno==3){
+	sdivname="mydiv3";
+	$('#row3').show();
+	$('#row1').hide();
+	$('#row2').hide();
+	}
+
+	ReactDOM.render(React.createElement(HearsayPage1, {pageno: pgno}), document.getElementById(sdivname));
     }
 
     function getIntegrationType() {
