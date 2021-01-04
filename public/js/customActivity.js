@@ -104,9 +104,8 @@ define([
         } else if(selectOption == 'currentJourney'){
 		console.log('input data '+$('input[name="leadsActivity"]')[0]);
 		var input = $('input[name="leadsActivity"]')[0];
-		var validityState_object = input.validity;
-		if (validityState_object.valueMissing){
-			
+		//var validityState_object = input.validity;
+		if (input.value == '' && input.value == undefined){
 	    		input.setCustomValidity('Must enter your template name!');
 	    		input.reportValidity();
 			showStep(null, 1);
