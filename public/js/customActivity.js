@@ -202,7 +202,7 @@ define([
     }
 	
     function getIntegrationValue() {
-	console.log('value '+$('select[name="integrationType"]').find('option:selected').attr('value').trim();
+	console.log('value '+$('select[name="integrationType"]').find('option:selected').attr('value').trim());
         return $('select[name="integrationType"]').find('option:selected').attr('value').trim();
     }
 
