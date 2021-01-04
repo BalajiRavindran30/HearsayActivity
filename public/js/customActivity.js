@@ -37,7 +37,7 @@ define([
         $(document).on('change','select[name="integrationType"]',function(){
             var selectedValue = getIntegrationValue();
             console.log('Integration Type '+$('select[name="integrationType"]'));
-            if(selectedValue != 'CurrentJourney'){
+            if(selectedValue != 'currentJourney'){
                 //reviewPageEnabled = !reviewPageEnabled; // toggle status
                 steps[1].active = false;
                 steps[2].active = true; // toggle active
@@ -105,7 +105,7 @@ define([
 		console.log('input data '+$('input[name="leadsActivity"]')[0]);
 		var input = $('input[name="leadsActivity"]')[0];
 		//var validityState_object = input.validity;
-		if (input.value == '' && input.value == undefined){
+		if (input.value == '' || input.value == undefined){
 	    		input.setCustomValidity('Must enter your template name!');
 	    		input.reportValidity();
 			showStep(null, 1);
