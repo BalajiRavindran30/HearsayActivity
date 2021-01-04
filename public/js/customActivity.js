@@ -34,9 +34,9 @@ define([
         connection.trigger('requestEndpoints');
         
         // Disable the next button if a value isn't selected
-        $('#select-01').change(function() {
+        $('select[name="integrationType"]').change(function() {
             var message = getIntegrationType();
-            console.log('message value '+message);
+            console.log('m$('select[name="integrationType"]')essage value '+message);
             if(message != 'CurrentJourney'){
                 //reviewPageEnabled = !reviewPageEnabled; // toggle status
                 steps[1].active = false;
@@ -57,7 +57,7 @@ define([
         if (data) {
             payload = data;
         }
-        
+        console.log('data '+getIntegrationType());
         var mapfields;
         var hasInArguments = Boolean(
             payload['arguments'] &&
