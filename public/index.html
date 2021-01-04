@@ -421,17 +421,7 @@
             } else{
               this.setState({erIntegrationType:""});
             }
-
-            if(this.state.integrationType=="currentJourney"){
-              if(this.state.leadsActivity=="" ||this.state.leadsActivity==" " ||this.state.leadsActivity==null){
-                this.setState({erleadsActivity:"Leads Activity Label is mandatory"});
-                isValidated=false;
-              } else{
-                
-                this.setState({erleadsActivity:""});
-              }
-            }
-
+	    
             //Save Data
             if(isValidated){
               var DropdownSelection=this.state.integrationType;
