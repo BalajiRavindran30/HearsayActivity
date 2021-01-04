@@ -151,7 +151,7 @@ define([
                 break;
             case 'step2':
 			 alert('step 2');
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
+                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv2'));
                 connection.trigger('updateButton', {
                     button: 'back',
                     visible: true
@@ -164,7 +164,7 @@ define([
                 break;
             case 'step3':
 			 alert('step 3');
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 3}), document.getElementById('mydiv'));
+                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 3}), document.getElementById('mydiv3'));
                 connection.trigger('updateButton', {
                      button: 'back',
                      visible: true
