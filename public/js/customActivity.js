@@ -138,7 +138,9 @@ define([
 
          switch(currentStep.key) {
             case 'step1':
-		$(document).ready(CallReactPage(1));
+		$(document).ready(function() {
+			CallReactPage("1")
+		});
                 connection.trigger('updateButton', {
                     button: 'next',
                     enabled: Boolean(getIntegrationValue())
@@ -149,7 +151,9 @@ define([
                 });
                 break;
             case 'step2':
-		$(document).ready(CallReactPage(2));
+		$(document).ready(function() {
+			CallReactPage("2")
+		});
                 connection.trigger('updateButton', {
                     button: 'back',
                     visible: true
@@ -161,7 +165,9 @@ define([
                 });
                 break;
             case 'step3':
-		$(document).ready(CallReactPage(3));
+		$(document).ready(function() {
+			CallReactPage("3")
+		});
                 connection.trigger('updateButton', {
                      button: 'back',
                      visible: true
