@@ -34,7 +34,10 @@ define([
         connection.trigger('requestEndpoints');
         
         // Disable the next button if a value isn't selected
-       $('select').on('change', function() {
+	connection.trigger('updateSteps', steps);
+	var message = getIntegrationType();
+	console.log('Value is '+);
+       /*$('select').on('change', function() {
             var message = getIntegrationType();
             console.log('Integration Type '+$('select[name="integrationType"]'));
             if(message != 'CurrentJourney'){
@@ -50,7 +53,7 @@ define([
                 connection.trigger('updateSteps', steps);
             }
             //$('').html(message);
-        });
+        });*/
     }
 
     function initialize (data) {
