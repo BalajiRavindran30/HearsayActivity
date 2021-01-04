@@ -36,7 +36,7 @@ define([
         // Disable the next button if a value isn't selected
 	connection.trigger('updateSteps', steps);
 	var message = getIntegrationType();
-	console.log('Value is '+);
+	console.log('Value is '+message);
        /*$('select').on('change', function() {
             var message = getIntegrationType();
             console.log('Integration Type '+$('select[name="integrationType"]'));
