@@ -26,6 +26,7 @@ define([
     connection.on('gotoStep', onGotoStep);
 
     function onRender() {
+        //$('#inputField-01').hide();
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
 
@@ -33,6 +34,23 @@ define([
         connection.trigger('requestEndpoints');
         
         // Disable the next button if a value isn't selected
+        $('#select-01').change(function() {
+            var message = getIntegrationType();
+            console.log('message value '+message);
+            if(message != 'CurrentJourney'){
+                //reviewPageEnabled = !reviewPageEnabled; // toggle status
+                steps[1].active = false;
+                steps[2].active = true; // toggle active
+                connection.trigger('updateSteps', steps);
+            } else {
+                //reviewPageEnabled = false; // toggle status
+                steps[2].active = false;
+                steps[1].active = true; // toggle active
+                $('#inputField-01').show();
+                connection.trigger('updateSteps', steps);
+            }
+            //$('').html(message);
+        });
     }
 
     function initialize (data) {
@@ -40,7 +58,7 @@ define([
             payload = data;
         }
         
-        var message;
+        var mapfields;
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -52,19 +70,19 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                if (key === 'message') {
-                    message = val;
+                if (key === 'mappedfields') {
+                    mapfields = val;
                 }
             });
         });
 
         // If there is no message selected, disable the next button
-        if (!message) {
+        if (!mapfields) {
             showStep(null, 1);
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
         } else {
-            //$('#select-01').find('option[value='+ message +']').attr('selected', 'selected');
+            //$('#select-01').find('option[value='+ mapfields +']').attr('selected', 'selected');
             //$('#message').html(message);
             showStep(null, 3);
         }
@@ -81,9 +99,22 @@ define([
     }
 
     function onClickedNext () {
-	//var selectOption = getMessage();
+	var selectOption = getIntegrationType();
         if (currentStep.key === 'step3' || currentStep.key === 'step2') {
             save();
+        } else if(selectOption == 'currentJourney'){
+		console.log('input data '+$('input[name="leadsActivity"]')[0]);
+		var input = $('input[name="leadsActivity"]')[0];
+		var validityState_object = input.validity;
+		if (validityState_object.valueMissing){
+			
+	    		input.setCustomValidity('Must enter your template name!');
+	    		input.reportValidity();
+			showStep(null, 1);
+			connection.trigger('ready');
+		} else {
+	    		connection.trigger('nextStep');
+		}
         } else {
 		connection.trigger('nextStep');
 	}
@@ -109,10 +140,10 @@ define([
 
          switch(currentStep.key) {
             case 'step1':
-                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 2}), document.getElementById('mydiv'));
+                ReactDOM.render(React.createElement(HearsayPage1, {pageno: 1}), document.getElementById('mydiv'));
                 connection.trigger('updateButton', {
                     button: 'next',
-                    visible: true
+                    enabled: Boolean(getMessage())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -147,24 +178,27 @@ define([
     }
 
     function save() {
-        //var name = $('#select-01').find('option:selected').html();
+        var name = $('select[name="integrationType"]').find('option:selected').html();
+	console.log('name '+name);
         //var value = getMessage();
+	var value = 'testing';
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
-        //payload.name = name;
-	console.log('Saved successfully');
-        //payload['arguments'].execute.inArguments = [{ "message": value }];
+        payload.name = name;
+
+        payload['arguments'].execute.inArguments = [{ "mappedfields": value }];
 
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
     }
 
-    function getMessage() {
-        return $('#select-01').find('option:selected').attr('value').trim();
+    function getIntegrationType() {
+	console.log('IntegrationType '+$('select[name="integrationType"]').find('option:selected').html());
+        return $('select[name="integrationType"]').find('option:selected').html();
     }
 
 });
