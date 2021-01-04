@@ -89,8 +89,8 @@ define([
 		div_data += "<li>"+key+' : '+val+"</li>";
 		}
 	    }
-	    $("#mappingfields").html(div_data);
-            showStep(null, 3);
+	    showStep(null, 3);
+	    $("#mappingfields").html(div_data);            
         }
     }
 
