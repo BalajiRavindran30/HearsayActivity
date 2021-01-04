@@ -179,7 +179,7 @@ define([
         var name = $('select[name="integrationType"]').find('option:selected').html();
 	console.log('name '+name);
         //var value = getMessage();
-	var value = 'testing';
+	var value;
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
