@@ -89,7 +89,7 @@ define([
 		div_data += "<li>"+key+' : '+val+"</li>";
 		}
 	    }
-	    $("#row3").html("<span class='red'>Hello <b>Again</b></span>");
+	    $("#row3 > div.col-md-10").html(div_data);
 	    showStep(null, 3);
         }
     }
