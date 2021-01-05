@@ -90,7 +90,7 @@ define([
 		}
 	    }
 	    showStep(null, 3);
-	    $("#mappingfields").html('<span class='red'>Hello <b>Again</b></span>');            
+	    $("#mappingfields").html("<span class='red'>Hello <b>Again</b></span>");            
         }
     }
 
