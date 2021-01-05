@@ -121,14 +121,21 @@ define([
 	    		connection.trigger('nextStep');
 		}
         } else if(currentStep.key === 'step2'){
-		hearsayfields [$('select[name="control1"]').find('option:selected').attr('value').trim()] = $('select[name="control5"]').find('option:selected').attr('value').trim();
-		hearsayfields [$('select[name="control2"]').find('option:selected').attr('value').trim()] = $('select[name="control6"]').find('option:selected').attr('value').trim();
-		hearsayfields [$('select[name="control3"]').find('option:selected').attr('value').trim()] = $('select[name="control7"]').find('option:selected').attr('value').trim();
-		hearsayfields [$('select[name="control4"]').find('option:selected').attr('value').trim()] = $('select[name="control8"]').find('option:selected').attr('value').trim();
-		hearsayfields [$('select[name="control9"]').find('option:selected').attr('value').trim()] = $('select[name="control13"]').find('option:selected').attr('value').trim();
-		hearsayfields [$('select[name="control10"]').find('option:selected').attr('value').trim()] = $('select[name="control14"]').find('option:selected').attr('value').trim();
-		hearsayfields [$('select[name="control11"]').find('option:selected').attr('value').trim()] = $('select[name="control15"]').find('option:selected').attr('value').trim();
-		hearsayfields [$('select[name="control12"]').find('option:selected').attr('value').trim()] = $('select[name="control16"]').find('option:selected').attr('value').trim();
+		hearsayfields [$('select[name="control1"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control1"]').find('option:selected').attr('value').trim()] = $('select[name="control5"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		hearsayfields [$('select[name="control2"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control2"]').find('option:selected').attr('value').trim()] = $('select[name="control6"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		hearsayfields [$('select[name="control3"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control3"]').find('option:selected').attr('value').trim()] = $('select[name="control7"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		hearsayfields [$('select[name="control4"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control4"]').find('option:selected').attr('value').trim()] = $('select[name="control8"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		hearsayfields [$('select[name="control9"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control9"]').find('option:selected').attr('value').trim()] = $('select[name="control3"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		hearsayfields [$('select[name="control10"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control10"]').find('option:selected').attr('value').trim()] = $('select[name="control4"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		hearsayfields [$('select[name="control11"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control11"]').find('option:selected').attr('value').trim()] = $('select[name="control5"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		hearsayfields [$('select[name="control12"]').find('option:selected').attr('value').trim()] != '--Select--' ? hearsayfields [$('select[name="control12"]').find('option:selected').attr('value').trim()] = $('select[name="control6"]').find('option:selected').attr('value').trim() : hearsayfields [];
+		//hearsayfields [$('select[name="control13"]').find('option:selected').attr('value').trim()] = $('select[name="control6"]').find('option:selected').attr('value').trim();
+		//hearsayfields [$('select[name="control14"]').find('option:selected').attr('value').trim()] = $('select[name="control7"]').find('option:selected').attr('value').trim();
+		//hearsayfields [$('select[name="control4"]').find('option:selected').attr('value').trim()] = $('select[name="control8"]').find('option:selected').attr('value').trim();
+		//hearsayfields [$('select[name="control9"]').find('option:selected').attr('value').trim()] = $('select[name="control13"]').find('option:selected').attr('value').trim();
+		//hearsayfields [$('select[name="control10"]').find('option:selected').attr('value').trim()] = $('select[name="control14"]').find('option:selected').attr('value').trim();
+		//hearsayfields [$('select[name="control11"]').find('option:selected').attr('value').trim()] = $('select[name="control15"]').find('option:selected').attr('value').trim();
+		//hearsayfields [$('select[name="control12"]').find('option:selected').attr('value').trim()] = $('select[name="control16"]').find('option:selected').attr('value').trim();
 		console.log('hearsayfields '+hearsayfields);
 		var div_data = '';
 	    	for (var key in hearsayfields) {
