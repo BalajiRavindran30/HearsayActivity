@@ -118,7 +118,23 @@ define([
 			showStep(null, 1);
 			connection.trigger('ready');
 		} else {
-	    		connection.trigger('nextStep');
+			var myHeaders = new Headers();
+			myHeaders.append("Content-Type", "text/xml");
+
+			var raw = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<s:Envelope xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:a=\"http://schemas.xmlsoap.org/ws/2004/08/addressing\" xmlns:u=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\">\n    <s:Header>\n        <a:Action s:mustUnderstand=\"1\">Retrieve</a:Action>\n        <a:To s:mustUnderstand=\"1\">https://.soap.marketingcloudapis.com/Service.asmx</a:To>\n        <fueloauth xmlns=\"http://exacttarget.com\">{{dne_etAccessToken}}</fueloauth>\n    </s:Header>\n    <s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n        <RetrieveRequestMsg xmlns=\"http://exacttarget.com/wsdl/partnerAPI\">\n            <RetrieveRequest>\n                <ObjectType>DataExtension</ObjectType>\n                <Properties>ObjectID</Properties>\n                <Properties>CustomerKey</Properties>\n                <Properties>Name</Properties>\n                <Properties>IsSendable</Properties>\n                <Properties>SendableSubscriberField.Name</Properties>\n                <Filter xsi:type=\"SimpleFilterPart\">\n                    <Property>CustomerKey</Property>\n                    <SimpleOperator>equals</SimpleOperator>\n                    <Value>Test_Job_Insert</Value>\n                </Filter>\n            </RetrieveRequest>\n        </RetrieveRequestMsg>\n    </s:Body>\n</s:Envelope>";
+
+			var requestOptions = {
+			  method: 'POST',
+			  headers: myHeaders,
+			  body: raw,
+			  redirect: 'follow'
+			};
+
+			fetch("https://.soap.marketingcloudapis.com/Service.asmx", requestOptions)
+			  .then(response => response.text())
+			  .then(result => console.log(result))
+			  .catch(error => console.log('error', error));
+	    		//connection.trigger('nextStep');
 		}
         } else if(currentStep.key === 'step2'){
 		if($('select[name="control1"]').find('option:selected').attr('value').trim() != '--Select--') hearsayfields [$('select[name="control1"]').find('option:selected').attr('value').trim()] = $('select[name="control5"]').find('option:selected').attr('value').trim();
