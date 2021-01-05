@@ -89,7 +89,7 @@ define([
 		div_data += "<li>"+key+' : '+val+"</li>";
 		}
 	    }
-	    $('#mydiv3').html('<div class="e1container"><div><img src="hearsay.png" width="50" height="50"><label class="e1pageheader">Hearsay Systems</label></div><div class="row epaddingbottom10"><div class="col-md-11 elRowPg1"><div><label class="e1labelheaderPage1">DATA EXTENSION TEMPLATES (NEW)</label></div>'+div_data+'</div><div class="col-md-1"></div></div><hr class="e1linecolor"/></div>');
+	    $('#mydiv3').html('<div class="e1container"><div><img src="images/hearsay.png" width="50" height="50"><label class="e1pageheader">Hearsay Systems</label></div><div class="row epaddingbottom10"><div class="col-md-11 elRowPg1"><div><label class="e1labelheaderPage1">DATA EXTENSION TEMPLATES (NEW)</label></div>'+div_data+'</div><div class="col-md-1"></div></div><hr class="e1linecolor"/></div>');
 	    showStep(null, 3);
         }
     }
@@ -130,6 +130,16 @@ define([
 		hearsayfields [$('select[name="control11"]').find('option:selected').attr('value').trim()] = $('select[name="control15"]').find('option:selected').attr('value').trim();
 		hearsayfields [$('select[name="control12"]').find('option:selected').attr('value').trim()] = $('select[name="control16"]').find('option:selected').attr('value').trim();
 		console.log('hearsayfields '+hearsayfields);
+		var div_data = '';
+	    	for (var key in hearsayfields) {
+			if (hearsayfields.hasOwnProperty(key)) {
+				var val = mapfields[key];
+				console.log('key '+key);
+				console.log('value '+val);
+				div_data += "<li>"+key+' : '+val+"</li>";
+			}
+	    	}
+	    	$('#mydiv3').html('<div class="e1container"><div><img src="images/hearsay.png" width="50" height="50"><label class="e1pageheader">Hearsay Systems</label></div><div class="row epaddingbottom10"><div class="col-md-11 elRowPg1"><div><label class="e1labelheaderPage1">DATA EXTENSION TEMPLATES (NEW)</label></div>'+div_data+'</div><div class="col-md-1"></div></div><hr class="e1linecolor"/></div>');
 		connection.trigger('nextStep');
 	}
     }
