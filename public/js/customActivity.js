@@ -89,7 +89,7 @@ define([
 		div_data += "<li>"+key+' : '+val+"</li>";
 		}
 	    }
-	    $('#row3 > div.col-md-10 > div > div > div.row.epaddingbottom10').html("<b>Hello guys</b>");
+	    $('#mydiv').html('<div class="e1container"><div><img src="hearsay.png" width="50" height="50"><label class="e1pageheader">Hearsay Systems</label></div><div class="row epaddingbottom10"><div class="col-md-11 elRowPg1"><div><label class="e1labelheaderPage1">DATA EXTENSION TEMPLATES (NEW)</label></div>+'div_data'+</div><div class="col-md-1"></div></div><hr class="e1linecolor"/></div>');
 	    showStep(null, 3);
         }
     }
@@ -246,8 +246,11 @@ define([
 	$('#row1').hide();
 	$('#row2').hide();
 	}
-
-	ReactDOM.render(React.createElement(HearsayPage1, {pageno: pgno}), document.getElementById(sdivname));
+	if(hearsayfields && pgno==3){
+		ReactDOM.render(React.createElement(HearsayPage1, {pageno: pgno}), document.getElementById(sdivname).innerHTML);
+	} else {
+		ReactDOM.render(React.createElement(HearsayPage1, {pageno: pgno}), document.getElementById(sdivname));
+	}
     }
 
     function getIntegrationType() {
