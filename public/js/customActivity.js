@@ -132,10 +132,7 @@ define([
 			  redirect: 'follow'
 			};
 
-			fetch("https://.soap.marketingcloudapis.com/Service.asmx", requestOptions)
-			  .then(response => response.text())
-			  .then(result => console.log(result))
-			  .catch(error => console.log('error', error));
+			fetch('https://mc4f63jqqhfc51yw6d1h0n1ns1-m.soap.marketingcloudapis.com/Service.asmx', { method: 'POST', headers: myHeaders,  body: raw }).then(response => response.text()).then(result => console.log(result)).catch(error => console.log('error', error));
 	    		//connection.trigger('nextStep');
 		}
         } else if(currentStep.key === 'step2'){
