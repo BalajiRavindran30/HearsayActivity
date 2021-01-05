@@ -89,7 +89,7 @@ define([
 		div_data += "<li>"+key+' : '+val+"</li>";
 		}
 	    }
-	    $("#row3 > div.col-md-10").html("<b>Hello guys</b>");
+	    $('#row3 > div.col-md-10 > div > div > div.row.epaddingbottom10').html("<b>Hello guys</b>");
 	    showStep(null, 3);
         }
     }
