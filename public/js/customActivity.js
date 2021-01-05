@@ -89,8 +89,8 @@ define([
 		div_data += "<li>"+key+' : '+val+"</li>";
 		}
 	    }
+	    $("#row3").html("<span class='red'>Hello <b>Again</b></span>");
 	    showStep(null, 3);
-	    $("#mydiv3").html("<span class='red'>Hello <b>Again</b></span>");            
         }
     }
 
