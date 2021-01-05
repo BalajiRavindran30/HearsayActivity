@@ -86,7 +86,9 @@ define([
 		var val = mapfields[key];
 		console.log('key '+key);
 		console.log('value '+val);
-		div_data += "<li>"+key+' : '+val+"</li>";
+		if(val != '--Select--' && key != '--Select--'){
+			div_data += "<li>"+key+' : '+val+"</li>";
+		   }
 		}
 	    }
 	    $('#mydiv3').html('<div class="e1container"><div><img src="images/hearsay.png" width="50" height="50"><label class="e1pageheader">Hearsay Systems</label></div><div class="row epaddingbottom10"><div class="col-md-11 elRowPg1"><div><label class="e1labelheaderPage1">DATA EXTENSION TEMPLATES (NEW)</label></div>'+div_data+'</div><div class="col-md-1"></div></div><hr class="e1linecolor"/></div>');
